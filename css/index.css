@@ -21,7 +21,8 @@ html, body{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    font-size: 13vh;
+    width: 100%;
+    font-size: calc(100vmax / 11);
     font-family: 'Silkscreen', cursive;
     text-rendering: geometricPrecision;
 }
@@ -37,4 +38,13 @@ html, body{
     -webkit-filter: blur(10px);
     background-blend-mode: color-burn;
     background-attachment: fixed;
+}
+
+.title .background.main {
+    margin-bottom: -100vh;
+}
+
+.title .background.fade {
+    opacity: 0;
+    transition: opacity 1s;
 }
