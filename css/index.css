@@ -3,16 +3,18 @@
 html, body{
     margin: 0;
     padding: 0;
-    
-    background-color: #000000a0;
+    overflow-y: overlay;
+    background-color: #484848;
 }
 
 .title {
     color: white;
     text-align: center;
+    -webkit-user-select: none;
     user-select: none;
     -webkit-user-drag: none;
     overflow: hidden;
+    position: relative;
 }
 
 .title header {
@@ -25,6 +27,9 @@ html, body{
     font-size: calc(100vmax / 11);
     font-family: 'Silkscreen', cursive;
     text-rendering: geometricPrecision;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    text-shadow: 3px 3px 11px white;
 }
 
 .title .background {
@@ -34,8 +39,8 @@ html, body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(10px);
     -webkit-filter: blur(10px);
+    filter: blur(10px);
     background-blend-mode: color-burn;
     background-attachment: fixed;
 }
@@ -47,4 +52,54 @@ html, body{
 .title .background.fade {
     opacity: 0;
     transition: opacity 1s;
+}
+
+.title .mousefollower {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: top 1s, left 1s;
+
+    width: 5vmax;
+    height: 5vmax;
+    border-radius: 50%;
+    -webkit-filter: blur(4vmax);
+    filter: blur(4vmax);
+    background-color: #ffffff44;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: red;
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4e4e4e;
+    background-image: linear-gradient(0deg, #5d5d5d, #4c4c4c);
+    background-clip: content-box;
+    border-radius: 10px;
+    border: 3px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #7c7c7c;
+    background-image: linear-gradient(0deg, #8e8e8e, #717171);
+    background-clip: content-box;
+    border-radius: 10px;
+    border: 3px solid transparent;
+}
+
+::-webkit-scrollbar-button {
+    height: 5vh;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #cacaca1e;
+    border-radius: 12px;
+    width: 12px;
 }

@@ -30,7 +30,35 @@ setInterval(()=>{
     }, 1e3);
 }, 10e3);
 
-document.addEventListener("scroll", (e)=>{
-    background.main.style.backgroundPositionY = `${-e.target.scrollTop / 2}px`;
-    background.fade.style.backgroundPositionY = `${-e.target.scrollTop / 2}px`;
-})
+
+function doFollowMouse(goto) {
+    var el = document.querySelector(".title .mousefollower");
+    el.style.left = `${goto.x}px`;
+    el.style.top = `${goto.y}px`;
+}
+
+var lastScrollPos = { x: 0, y: 0 };
+function onScroll(e) {
+    target = e.target;
+    while (typeof target.scrollTop == 'undefined') { target = target.lastElementChild; }
+    var el = document.querySelector(".title .mousefollower");
+    var pos = { x: parseFloat(el.style.left), y: parseFloat(el.style.top) }
+    pos.x += target.scrollLeft - lastScrollPos.x;
+    pos.y += target.scrollTop - lastScrollPos.y;
+    doFollowMouse(pos);
+    lastScrollPos.x = target.scrollLeft;
+    lastScrollPos.y = target.scrollTop;
+    background.main.style.backgroundPositionY = `${-target.scrollTop / 2}px`;
+    background.fade.style.backgroundPositionY = `${-target.scrollTop / 2}px`;
+}
+
+function onMouseMove(e) {
+    var el = document.querySelector(".title .mousefollower");
+    doFollowMouse({
+        x: e.pageX - el.getBoundingClientRect().width / 2,
+        y: e.pageY - el.getBoundingClientRect().height / 2
+    });
+}
+
+document.addEventListener("scroll", onScroll);
+document.addEventListener("mousemove", onMouseMove);
