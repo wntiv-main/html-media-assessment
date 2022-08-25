@@ -1,71 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
-
 html, body{
     margin: 0;
     padding: 0;
     overflow-y: overlay;
     background-color: #484848;
-}
-
-.title {
-    color: white;
-    text-align: center;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    overflow: hidden;
-    position: relative;
-}
-
-.title header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 100%;
-    font-size: calc(100vmax / 11);
-    font-family: 'Silkscreen', cursive;
-    text-rendering: geometricPrecision;
-    -webkit-filter: blur(1px);
-    filter: blur(1px);
-    text-shadow: 3px 3px 11px white;
-}
-
-.title .background {
-    height: 100vh;
-    background-color: #000000a0;
-    /* background-image: from js page */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    -webkit-filter: blur(10px);
-    filter: blur(10px);
-    background-blend-mode: color-burn;
-    background-attachment: fixed;
-}
-
-.title .background.main {
-    margin-bottom: -100vh;
-}
-
-.title .background.fade {
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-.title .mousefollower {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    transition: top 1s, left 1s;
-
-    width: 5vmax;
-    height: 5vmax;
-    border-radius: 50%;
-    -webkit-filter: blur(4vmax);
-    filter: blur(4vmax);
-    background-color: #ffffff44;
 }
 
 * {
