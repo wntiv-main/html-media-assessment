@@ -22,6 +22,7 @@
 
 .title .background {
     height: 100vh;
+    overflow: hidden;
     background-color: #000000a0;
     /* background-image: from js page */
     background-repeat: no-repeat;
@@ -40,4 +41,15 @@
 .title .background.fade {
     opacity: 0;
     transition: opacity 1s;
+}
+
+nav {
+    --height: 50px;
+    position: sticky;
+    background: #6A2834a0;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    height: var(--height);
+    top: var(--height);
+    transform: translateY(-100%);
 }
