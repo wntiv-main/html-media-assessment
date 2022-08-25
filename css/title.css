@@ -6,6 +6,7 @@
     user-select: none;
     -webkit-user-drag: none;
     overflow: hidden;
+    position: relative;
 }
 
 .title header {
@@ -43,8 +44,23 @@
     transition: opacity 1s;
 }
 
+.title .mousefollower {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: top 1s, left 1s;
+
+    width: 5vmax;
+    height: 5vmax;
+    border-radius: 50%;
+    -webkit-filter: blur(4vmax);
+    filter: blur(4vmax);
+    background-color: #ffffff44;
+}
+
 nav {
     --height: 50px;
+    position: -webkit-sticky;
     position: sticky;
     background: #6A2834a0;
     -webkit-backdrop-filter: blur(20px);
