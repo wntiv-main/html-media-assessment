@@ -1,151 +1,173 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
+:root {
+	--nav-height: 4rem;
+}
+
 .title {
-    color: white;
-    text-align: center;
-    user-select: none;
-    -webkit-user-drag: none;
-    overflow: hidden;
-    position: relative;
+	color: white;
+	text-align: center;
+	user-select: none;
+	-webkit-user-drag: none;
+	overflow: hidden;
+	position: relative;
 }
 
 .title header {
-    position: absolute;
-    top: calc(50% - 0px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    width: 100%;
-    font-size: calc(100vmax / 11);
-    font-family: 'Silkscreen', monospace;
-    text-rendering: geometricPrecision;
-    -webkit-filter: blur(1px);
-    filter: blur(1px);
-    text-shadow: 3px 3px 11px white;
+	position: absolute;
+	top: calc(50% - 0px);
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	width: 100%;
+	font-size: calc(100vmax / 11);
+	font-family: 'Silkscreen', monospace;
+	text-rendering: geometricPrecision;
+	-webkit-filter: blur(1px);
+	filter: blur(1px);
+	text-shadow: 3px 3px 11px white;
 }
 
 .title .background {
-    height: 100vh;
-    overflow: hidden;
-    background-color: #000000a0;
-    /* background-image: from js page */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 0px;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    background-blend-mode: color-burn;
-    background-attachment: fixed;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #000000a0;
+	/* background-image: from js page */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center 0px;
+	filter: blur(10px);
+	-webkit-filter: blur(10px);
+	background-blend-mode: color-burn;
+	background-attachment: fixed;
 }
 
 .title .background.main {
-    margin-bottom: -100vh;
+	margin-bottom: -100vh;
 }
 
 .title .background.fade {
-    opacity: 0;
-    transition: opacity 1s;
+	opacity: 0;
+	transition: opacity 1s;
 }
 
 .title .mousefollower {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    transition: top 1s, left 1s;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transition: top 1s, left 1s;
 
-    width: 5vmax;
-    height: 5vmax;
-    border-radius: 50%;
-    -webkit-filter: blur(4vmax);
-    filter: blur(4vmax);
-    background-color: #ffffff44;
+	width: 5vmax;
+	height: 5vmax;
+	border-radius: 50%;
+	-webkit-filter: blur(4vmax);
+	filter: blur(4vmax);
+	background-color: #ffffff44;
+}
+
+.title .scrollhint.vertical:not(.invert) {
+	background-color: #6A2834a0;
+	bottom: calc(var(--nav-height) + 1em);
 }
 
 nav {
-    --height: 4rem;
-    position: -webkit-sticky;
-    position: sticky;
-    -webkit-backdrop-filter: blur(16px) brightness(0.6);
-    backdrop-filter: blur(16px) brightness(0.6);
-    height: var(--height);
-    top: var(--height);
-    transform: translateY(-100%);
-    font-family: 'Silkscreen', monospace;
-    overflow: hidden;
-    z-index: 1000;
+	position: -webkit-sticky;
+	position: sticky;
+	-webkit-backdrop-filter: blur(16px) brightness(0.6);
+	backdrop-filter: blur(16px) brightness(0.6);
+	height: var(--nav-height);
+	margin-bottom: calc(0 - var(--nav-height));
+	top: var(--nav-height);
+	transform: translateY(-100%);
+	font-family: 'Silkscreen', monospace;
+	overflow: hidden;
+	z-index: 1000;
 }
 
 nav::before {
-    content: "";
-    background: #6A283480;
-    mix-blend-mode: color;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0px;
+	content: "";
+	background: #6A283480;
+	mix-blend-mode: color;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
 }
 
 nav ul {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    list-style: none;
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    /* Fix stupid random spaces problem */
-    font-size: 0px;
-    overflow-x: overlay;
-    overflow-y: hidden;
-    white-space: nowrap;
-    scrollbar-width: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	list-style: none;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	/* Fix stupid random spaces problem */
+	font-size: 0px;
+	overflow-x: overlay;
+	overflow-y: hidden;
+	white-space: nowrap;
+	scrollbar-width: none;
+	scroll-behavior: smooth;
 }
 
 nav ul::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 nav ul li {
-    display: inline-block;
+	display: inline-block;
 }
 
 nav ul li a {
-    color: white;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: var(--height);
-    padding: 0 2em;
-    font-size: 1.6rem;
-    text-decoration: none;
-    border-left: 1px solid white;
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: var(--nav-height);
+	padding: 0 2em;
+	font-size: 1.6rem;
+	text-decoration: none;
+	border-left: 1px solid white;
 
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
 }
 
 nav ul li:first-of-type a {
-    border: 0;
+	border: 0;
 }
 
 nav .highlight {
-    position: absolute;
-    background-color: #bc7837a0;
-    top: 0;
-    left: -1000px;
-    width: 0px;
-    height: 100%;
+	position: absolute;
+	background-color: #bc7837a0;
+	top: 0;
+	left: -1000px;
+	width: 0px;
+	height: 100%;
 
-    transition: left 0.3s, width 0.3s;
+	transition: left 0.3s, width 0.3s;
 }
 
 body.fallback nav ul li a {
-    transition: box-shadow 0.3s;
+	transition: box-shadow 0.3s;
 }
 
 body.fallback nav ul li a:hover,
 body.fallback nav ul li a:focus,
 body.fallback nav ul li a.selected {
-    box-shadow: inset #bc7837a0 0 0 calc(var(--height) / 2) calc(var(--height) / 2);
+	box-shadow: inset #bc7837a0 0 0 calc(var(--nav-height) / 2) calc(var(--nav-height) / 2);
+}
+
+nav .scrollhint {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+@media (min-width: 1260px) {
+	nav .scrollhint {
+		display: none;
+		opacity: 0;
+	}
 }

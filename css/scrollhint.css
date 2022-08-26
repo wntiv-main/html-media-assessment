@@ -1,0 +1,63 @@
+.scrollhint {
+	background-color: #000000a0;
+	border-radius: 20px;
+	width: 3.2em;
+	height: 2.5em;
+	cursor: pointer;
+	position: absolute;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	z-index: 1000;
+}
+
+.scrollhint::after {
+	content: ">";
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-weight: bolder;
+	font-size: 1.75em;
+	position: relative;
+	top: 0.1em;
+	left: 0.4em;
+	transition: left 0.3s;
+}
+
+.scrollhint:hover::after {
+	left: 0.7em;
+}
+
+.scrollhint.vertical {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.scrollhint.vertical::after {
+	left: -0.1em;
+}
+
+.scrollhint.vertical:hover::after {
+	left: 0.1em;
+}
+
+.scrollhint.vertical:not(.invert) {
+	bottom: 1em;
+	transform: translateX(-50%) rotate(90deg);
+}
+
+.scrollhint.vertical.invert {
+	top: 1em;
+	transform: translateX(-50%) rotate(-90deg);
+}
+
+.scrollhint.horizontal {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.scrollhint.horizontal:not(.invert) {
+	right: 1em;
+}
+
+.scrollhint.horizontal.invert {
+	left: 1em;
+	transform: translateY(-50%) rotate(180deg);
+}

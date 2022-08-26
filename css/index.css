@@ -10,6 +10,7 @@ html {
     overflow-y: overlay;
     scrollbar-width: thin;
     scrollbar-color: #4e4e4e;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
