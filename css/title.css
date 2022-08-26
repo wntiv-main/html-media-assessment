@@ -10,7 +10,7 @@
 }
 
 .title header {
-    position: fixed;
+    position: absolute;
     top: calc(50% - 0px);
     left: 50%;
     transform: translate(-50%, -50%);
@@ -22,8 +22,6 @@
     -webkit-filter: blur(1px);
     filter: blur(1px);
     text-shadow: 3px 3px 11px white;
-
-    transition: top 0.05s ease;
 }
 
 .title .background {
@@ -38,8 +36,6 @@
     -webkit-filter: blur(10px);
     background-blend-mode: color-burn;
     background-attachment: fixed;
-
-    transition: background-position-y 0.1s ease;
 }
 
 .title .background.main {

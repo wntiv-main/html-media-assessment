@@ -91,7 +91,7 @@ function onScroll(e) {
     // Update parallax
     background.main.style.backgroundPositionY = `${-target.scrollTop / 3}px`;
     background.fade.style.backgroundPositionY = `${-target.scrollTop / 3}px`;
-    background.header.style.top = `calc(50% - ${target.scrollTop * 2 / 3}px)`;
+    background.header.style.top = `calc(50% + ${target.scrollTop / 3}px)`;
 }
 
 function onMouseMove(e) {
