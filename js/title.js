@@ -21,7 +21,7 @@ function toTitleCase(str) {
 // Image must be <game>_<n>.jpg, where n is in the range 1..noImages[game]
 // and game is an element in the games array.
 var games = ["league-of-legends", "minėcraft", "rocket-league"];
-var navPages = [].concat("index", games);
+var navPages = [].concat("index", games, "coming-soon");
 var noImgs = { "league-of-legends": 4, "minėcraft": 7, "rocket-league": 2 };
 
 function getBackgroundImage(){
@@ -107,20 +107,59 @@ function onMouseMove(e) {
 document.addEventListener("scroll", onScroll);
 document.addEventListener("mousemove", onMouseMove);
 
+var nav = {
+    els: [],
+    selectedEl: null,
+    pageEl: null
+};
+function doHighlight(e) {
+    nav.selectedEl = e.target;
+    var highlight = document.querySelector("nav .highlight");
+    var bbox = e.target.getBoundingClientRect();
+    highlight.style.width = `${bbox.width}px`;
+    highlight.style.left = `${bbox.left}px`;
+}
+
+function doInstantHighlight(e) {
+    nav.selectedEl = e.target;
+    var highlight = document.querySelector("nav .highlight");
+    var bbox = e.target.getBoundingClientRect();
+    highlight.style.transition = "none";
+    highlight.style.width = `${bbox.width}px`;
+    highlight.style.left = `${bbox.left}px`;
+    setTimeout(() => highlight.style.transition = "left 0.3s, width 0.3s", 10);
+}
+
+document.querySelector("nav ul").addEventListener("scroll", () => doInstantHighlight({ target: nav.selectedEl }));
+window.addEventListener("resize", () => doInstantHighlight({ target: nav.selectedEl }));
+
 // Set up navbar
 var navbar = document.querySelector("nav ul");
 for (var page of navPages) {
     var liEl = document.createElement("li");
     var aEl = document.createElement("a");
     aEl.innerText = toTitleCase(page.replace(/-/g, " ").replace("index", "home").replace("ė", "e"));
-    aEl.href = `./${page}.html`
+    aEl.href = `./${page}.html`;
+    aEl.addEventListener("mouseleave", () => doHighlight({ target: nav.pageEl }));
+    aEl.addEventListener("blur", () => doHighlight({ target: nav.pageEl }));
+    aEl.addEventListener("mouseenter", doHighlight);
+    aEl.addEventListener("focus", doHighlight);
     if (decodeURIComponent(location.pathname).includes(page)) {
         aEl.className = "selected";
         // Disable button from navigating
         aEl.addEventListener("click", (e) => e.preventDefault());
         // Mark as disabled for screen-readers
         aEl.setAttribute("aria-disabled", true);
+        // Save for later
+        nav.pageEl = aEl;
     }
+    nav.els.push(aEl);
     liEl.appendChild(aEl);
     navbar.appendChild(liEl);
 }
+
+// Start with highlight on selected element
+var init = () => doInstantHighlight({ target: nav.pageEl });
+init();
+
+document.fonts.ready.then(() =>{ if (document.fonts.check('1.6em Silkscreen')) init() });
