@@ -67,6 +67,11 @@
 .title .scrollhint.vertical:not(.invert) {
 	background-color: #6A2834a0;
 	bottom: calc(var(--nav-height) + 1em);
+	transition: background-color 0.3s;
+}
+
+.title .scrollhint.vertical:not(.invert):hover {
+	background-color: #bc7837a0;
 }
 
 nav {

@@ -36,6 +36,7 @@ function getBackgroundImage() {
 	for (var g of games) {
 		if (decodeURIComponent(location.pathname).includes(g)) {
 			game = g;
+			break;
 		}
 	}
 	// Format correctly and use correct file path and extension
@@ -226,8 +227,6 @@ init();
 document.fonts.ready.then(() => {
 	if (document.fonts.check('1.6em Silkscreen')) init()
 });
-
-
 
 scrollHints.title.addEventListener("click", () => document.scrollingElement.scrollBy(0, window.innerHeight - document.scrollingElement.scrollTop));
 scrollHints.navLeft.addEventListener("click", () => nav.listEl.scrollBy(-(nav.listEl.scrollWidth / nav.els.length), 0));
