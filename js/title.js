@@ -129,6 +129,20 @@ var nav = {
 	navEl: document.querySelector("nav")
 };
 
+var scrollHints = {
+	title: document.querySelector(".title .scrollhint"),
+	navLeft: null,
+	navRight: null
+}
+
+for (var el of document.querySelectorAll("nav .scrollhint")) {
+	if (el.className.includes("invert")) {
+		scrollHints.navLeft = el;
+	} else {
+		scrollHints.navRight = el;
+	}
+}
+
 function doHighlight(e) {
 	nav.selectedEl = e.target;
 	var highlight = document.querySelector("nav .highlight");
@@ -145,6 +159,17 @@ function doInstantHighlight(e) {
 	highlight.style.width = `${bbox.width}px`;
 	highlight.style.left = `${bbox.left}px`;
 	setTimeout(() => highlight.style.transition = "left 0.3s, width 0.3s", 10);
+}
+
+function onListScroll(e) {
+	scrollHints.navLeft.style.opacity = e.target.scrollLeft < 10 ? 0 : 1;
+	scrollHints.navRight.style.opacity = e.target.scrollLeft >
+		nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? 0 : 1;
+	setTimeout(() => {
+		scrollHints.navLeft.style.pointerEvents = e.target.scrollLeft < 10 ? "none" : "auto";
+		scrollHints.navRight.style.pointerEvents = e.target.scrollLeft >
+			nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? "none" : "auto";
+	}, 1000);
 }
 
 document.querySelector("nav ul").addEventListener("scroll", () => doInstantHighlight({
@@ -183,34 +208,23 @@ for (var page of navPages) {
 }
 
 // Start with highlight on selected element
-var init = () => doInstantHighlight({
-	target: nav.pageEl
-});
+var init = () => {
+	doInstantHighlight({
+		target: nav.pageEl
+	});
+	onListScroll({
+		target: nav.listEl
+	});
+}
 init();
 
 document.fonts.ready.then(() => {
 	if (document.fonts.check('1.6em Silkscreen')) init()
 });
 
-var scrollHints = {
-	title: document.querySelector(".title .scrollhint"),
-	navLeft: null,
-	navRight: null
-}
 
-for (var el of document.querySelectorAll("nav .scrollhint")) {
-	if (el.className.includes("invert")) {
-		scrollHints.navLeft = el;
-	} else {
-		scrollHints.navRight = el;
-	}
-}
 
 scrollHints.title.addEventListener("click", () => document.scrollingElement.scrollBy(0, window.innerHeight - document.scrollingElement.scrollTop));
-scrollHints.navLeft.addEventListener("click", () => nav.listEl.scrollBy(-100, 0));
-scrollHints.navRight.addEventListener("click", () => nav.listEl.scrollBy(100, 0));
-nav.listEl.addEventListener("scroll", (e) => {
-	scrollHints.navLeft.style.opacity = e.target.scrollLeft < 10 ? 0 : 1;
-	scrollHints.navRight.style.opacity = e.target.scrollLeft >
-		nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? 0 : 1;
-})
+scrollHints.navLeft.addEventListener("click", () => nav.listEl.scrollBy(-(nav.listEl.scrollWidth / nav.els.length), 0));
+scrollHints.navRight.addEventListener("click", () => nav.listEl.scrollBy((nav.listEl.scrollWidth / nav.els.length), 0));
+nav.listEl.addEventListener("scroll", onListScroll);

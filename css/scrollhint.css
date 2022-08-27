@@ -12,6 +12,7 @@
 
 .scrollhint::after {
 	content: ">";
+	user-select: none;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-weight: bolder;
 	font-size: 1.75em;

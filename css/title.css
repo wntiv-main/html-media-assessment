@@ -57,12 +57,11 @@
 	left: 0px;
 	transition: top 1s, left 1s;
 
-	width: 5vmax;
-	height: 5vmax;
+	width: 170vmax;
+	height: 170vmax;
 	border-radius: 50%;
-	-webkit-filter: blur(4vmax);
-	filter: blur(4vmax);
-	background-color: #ffffff44;
+	background-color: transparent;
+	background-image: radial-gradient(#ffffff10, transparent 70%);
 }
 
 .title .scrollhint.vertical:not(.invert) {
