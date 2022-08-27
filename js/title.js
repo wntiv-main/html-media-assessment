@@ -209,6 +209,11 @@ for (var page of navPages) {
 
 // Start with highlight on selected element
 var init = () => {
+	nav.pageEl.scrollIntoView({
+		behaviour: "auto",
+		block: "nearest",
+		inline: "nearest"
+	});
 	doInstantHighlight({
 		target: nav.pageEl
 	});
