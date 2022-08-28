@@ -42,11 +42,13 @@
 .scrollhint.vertical:not(.invert) {
 	bottom: 1em;
 	transform: translateX(-50%) rotate(90deg);
+	box-shadow: #000000a0 2px -1px 5px;
 }
 
 .scrollhint.vertical.invert {
 	top: 1em;
 	transform: translateX(-50%) rotate(-90deg);
+	box-shadow: #000000a0 -2px 1px 5px;
 }
 
 .scrollhint.horizontal {
@@ -56,9 +58,11 @@
 
 .scrollhint.horizontal:not(.invert) {
 	right: 1em;
+	box-shadow: #000000a0 2px 1px 5px;
 }
 
 .scrollhint.horizontal.invert {
 	left: 1em;
 	transform: translateY(-50%) rotate(180deg);
+	box-shadow: #000000a0 -2px -1px 5px;
 }

@@ -146,11 +146,11 @@ nav ul li:first-of-type a {
 nav .highlight {
 	position: absolute;
 	background-color: #bc7837a0;
+	box-shadow: inset #000000a0 0px 0px 16px;
 	top: 0;
 	left: -1000px;
 	width: 0px;
 	height: 100%;
-
 	transition: left 0.3s, width 0.3s;
 }
 

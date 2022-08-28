@@ -87,26 +87,21 @@ var lastScrollPos = {
 };
 
 function onScroll(e) {
-	var target = e.target;
-	// Find the scrolling element
-	while (typeof target.scrollTop == 'undefined') {
-		target = target.lastElementChild;
-	}
 	// Update mouse follower so it doesnt get stuck when scrolling
 	var el = document.querySelector(".title .mousefollower");
 	var pos = {
 		x: parseFloat(el.style.left),
 		y: parseFloat(el.style.top)
 	}
-	pos.x += target.scrollLeft - lastScrollPos.x;
-	pos.y += target.scrollTop - lastScrollPos.y;
+	pos.x += document.scrollingElement.scrollLeft - lastScrollPos.x;
+	pos.y += document.scrollingElement.scrollTop - lastScrollPos.y;
 	doFollowMouse(pos);
-	lastScrollPos.x = target.scrollLeft;
-	lastScrollPos.y = target.scrollTop;
+	lastScrollPos.x = document.scrollingElement.scrollLeft;
+	lastScrollPos.y = document.scrollingElement.scrollTop;
 	// Update parallax
-	background.main.style.backgroundPositionY = `${-target.scrollTop / 3}px`;
-	background.fade.style.backgroundPositionY = `${-target.scrollTop / 3}px`;
-	background.header.style.top = `calc(50% + ${target.scrollTop / 3}px)`;
+	background.main.style.backgroundPositionY = `${-document.scrollingElement.scrollTop / 3}px`;
+	background.fade.style.backgroundPositionY = `${-document.scrollingElement.scrollTop / 3}px`;
+	background.header.style.top = `calc(50% + ${document.scrollingElement.scrollTop / 3}px)`;
 }
 
 function onMouseMove(e) {
