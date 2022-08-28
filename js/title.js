@@ -158,22 +158,22 @@ function doInstantHighlight(e) {
 }
 
 function onListScroll(e) {
-	scrollHints.navLeft.style.opacity = e.target.scrollLeft < 10 ? 0 : 1;
-	scrollHints.navRight.style.opacity = e.target.scrollLeft >
-		nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? 0 : 1;
-	setTimeout(() => {
-		scrollHints.navLeft.style.pointerEvents = e.target.scrollLeft < 10 ? "none" : "auto";
-		scrollHints.navRight.style.pointerEvents = e.target.scrollLeft >
-			nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? "none" : "auto";
-	}, 1000);
+	if (nav.listEl.scrollWidth - nav.listEl.clientWidth) {
+		scrollHints.navLeft.style.opacity = e.target.scrollLeft < 10 ? 0 : 1;
+		scrollHints.navRight.style.opacity = e.target.scrollLeft >
+			nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? 0 : 1;
+		setTimeout(() => {
+			scrollHints.navLeft.style.pointerEvents = e.target.scrollLeft < 10 ? "none" : "auto";
+			scrollHints.navRight.style.pointerEvents = e.target.scrollLeft >
+				nav.listEl.scrollWidth - nav.listEl.clientWidth - 10 ? "none" : "auto";
+		}, 1000);
+	} else {
+		scrollHints.navLeft.style.opacity = 0;
+		scrollHints.navRight.style.opacity = 0;
+		scrollHints.navLeft.style.pointerEvents = "none";
+		scrollHints.navRight.style.pointerEvents = "none";
+	}
 }
-
-document.querySelector("nav ul").addEventListener("scroll", () => doInstantHighlight({
-	target: nav.selectedEl
-}));
-window.addEventListener("resize", () => doInstantHighlight({
-	target: nav.selectedEl
-}));
 
 // Set up navbar
 for (var page of navPages) {
@@ -223,7 +223,16 @@ document.fonts.ready.then(() => {
 	if (document.fonts.check('1.6em Silkscreen')) init()
 });
 
+document.querySelector("nav ul").addEventListener("scroll", () => doInstantHighlight({
+	target: nav.selectedEl
+}));
+window.addEventListener("resize", () => doInstantHighlight({
+	target: nav.selectedEl
+}));
 scrollHints.title.addEventListener("click", () => document.scrollingElement.scrollBy(0, window.innerHeight - document.scrollingElement.scrollTop));
 scrollHints.navLeft.addEventListener("click", () => nav.listEl.scrollBy(-(nav.listEl.scrollWidth / nav.els.length), 0));
 scrollHints.navRight.addEventListener("click", () => nav.listEl.scrollBy((nav.listEl.scrollWidth / nav.els.length), 0));
 nav.listEl.addEventListener("scroll", onListScroll);
+window.addEventListener("resize", () => onListScroll({
+	target: nav.listEl
+}));

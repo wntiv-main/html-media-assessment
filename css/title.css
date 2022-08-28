@@ -168,10 +168,3 @@ nav .scrollhint {
 	opacity: 1;
 	transition: opacity 0.3s;
 }
-
-@media (min-width: 1260px) {
-	nav .scrollhint {
-		display: none;
-		opacity: 0;
-	}
-}
