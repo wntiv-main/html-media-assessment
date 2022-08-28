@@ -80,7 +80,7 @@ nav {
 	-webkit-backdrop-filter: blur(16px) brightness(0.6);
 	backdrop-filter: blur(16px) brightness(0.6);
 	height: var(--nav-height);
-	margin-bottom: calc(0 - var(--nav-height));
+	margin-bottom: calc(-1 * var(--nav-height));
 	top: var(--nav-height);
 	transform: translateY(-100%);
 	font-family: 'Silkscreen', monospace;
