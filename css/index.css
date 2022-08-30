@@ -43,3 +43,50 @@ html {
     border-radius: 12px;
     width: 12px;
 }
+
+article {
+    display: inline-block;
+    width: 92vw;
+    margin: 2vw;
+    padding: 2vw;
+    border-radius: 2vw;
+    background-color: #6A283480;
+}
+
+/* Airport for floating elements to land at */
+article .airport {
+    clear: both;
+}
+
+.imgcontainer {
+    border-radius: 30px;
+    width: 400px;
+    max-width: calc(100% - 10px);
+    margin: 5px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.imgcontainer img {
+    width: 100%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: filter 0.3s;
+}
+
+.imgcontainer:hover {
+    transform: scale(1.1);
+}
+
+.imgcontainer:not(:hover) img {
+    filter: blur(1px);
+}

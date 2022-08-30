@@ -90,8 +90,8 @@ function onScroll(e) {
 	// Update mouse follower so it doesnt get stuck when scrolling
 	var el = document.querySelector(".title .mousefollower");
 	var pos = {
-		x: parseFloat(el.style.left),
-		y: parseFloat(el.style.top)
+		x: parseFloat(el.style.left) || 0,
+		y: parseFloat(el.style.top) || 0
 	}
 	pos.x += document.scrollingElement.scrollLeft - lastScrollPos.x;
 	pos.y += document.scrollingElement.scrollTop - lastScrollPos.y;
@@ -196,7 +196,7 @@ for (var page of navPages) {
 		// Mark as disabled for screen-readers
 		aEl.setAttribute("aria-disabled", true);
 		// Save for later
-		nav.pageEl = aEl;
+		nav.selectedEl = nav.pageEl = aEl;
 	}
 	nav.els.push(aEl);
 	liEl.appendChild(aEl);
