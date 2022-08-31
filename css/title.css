@@ -4,7 +4,7 @@
 	--nav-height: 4rem;
 }
 
-.title {
+header {
 	color: white;
 	text-align: center;
 	user-select: none;
@@ -13,7 +13,9 @@
 	position: relative;
 }
 
-.title header {
+header h1 {
+	margin: 0;
+	display: block;
 	position: absolute;
 	top: calc(50% - 0px);
 	left: 50%;
@@ -28,7 +30,7 @@
 	text-shadow: 3px 3px 11px white;
 }
 
-.title .background {
+header .background {
 	height: 100vh;
 	overflow: hidden;
 	background-color: #000000a0;
@@ -42,16 +44,16 @@
 	background-attachment: fixed;
 }
 
-.title .background.main {
+header .background.main {
 	margin-bottom: -100vh;
 }
 
-.title .background.fade {
+header .background.fade {
 	opacity: 0;
 	transition: opacity 1s;
 }
 
-.title .mousefollower {
+header .mousefollower {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -64,13 +66,13 @@
 	background-image: radial-gradient(#ffffff10, transparent 70%);
 }
 
-.title .scrollhint.vertical:not(.invert) {
+header .scrollhint.vertical:not(.invert) {
 	background-color: #6A2834a0;
 	bottom: calc(var(--nav-height) + 1em);
 	transition: background-color 0.3s;
 }
 
-.title .scrollhint.vertical:not(.invert):hover {
+header .scrollhint.vertical:not(.invert):hover {
 	background-color: #bc7837a0;
 }
 

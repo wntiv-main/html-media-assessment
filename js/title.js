@@ -45,9 +45,9 @@ function getBackgroundImage() {
 
 // Useful background elements
 var background = {
-	main: document.querySelector(".title .background.main"),
-	fade: document.querySelector(".title .background.fade"),
-	header: document.querySelector(".title header")
+	main: document.querySelector("header .background.main"),
+	fade: document.querySelector("header .background.fade"),
+	header: document.querySelector("header h1")
 }
 
 // Set initial background (hopefully quick enough that user does not notice)
@@ -76,7 +76,7 @@ setInterval(() => {
 }, 10e3);
 
 function doFollowMouse(goto) {
-	var el = document.querySelector(".title .mousefollower");
+	var el = document.querySelector("header .mousefollower");
 	el.style.left = `${goto.x}px`;
 	el.style.top = `${goto.y}px`;
 }
@@ -88,7 +88,7 @@ var lastScrollPos = {
 
 function onScroll(e) {
 	// Update mouse follower so it doesnt get stuck when scrolling
-	var el = document.querySelector(".title .mousefollower");
+	var el = document.querySelector("header .mousefollower");
 	var pos = {
 		x: parseFloat(el.style.left) || 0,
 		y: parseFloat(el.style.top) || 0
@@ -105,7 +105,7 @@ function onScroll(e) {
 }
 
 function onMouseMove(e) {
-	var el = document.querySelector(".title .mousefollower");
+	var el = document.querySelector("header .mousefollower");
 	// Update mouse follower
 	doFollowMouse({
 		x: e.pageX - el.getBoundingClientRect().width / 2,
@@ -126,7 +126,7 @@ var nav = {
 };
 
 var scrollHints = {
-	title: document.querySelector(".title .scrollhint"),
+	title: document.querySelector("header .scrollhint"),
 	navLeft: null,
 	navRight: null
 }
