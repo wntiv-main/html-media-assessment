@@ -53,7 +53,7 @@ article {
     background-color: #6A283480;
 }
 
-/* Airport for floating elements to land at */
+/* "Airport" for floating elements to land at */
 article .airport {
     clear: both;
 }
@@ -61,6 +61,8 @@ article .airport {
 .imgcontainer {
     border-radius: 30px;
     width: 400px;
+    /* Fix bug with 4 extra px at bottom of img */
+    font-size: 0px;
     max-width: calc(100% - 10px);
     margin: 5px;
     overflow: hidden;
