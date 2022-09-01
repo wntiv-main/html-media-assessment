@@ -21,11 +21,11 @@ function toTitleCase(str) {
 // The games. The URL for the page must be <game>.html and each
 // Image must be <game>_<n>.jpg, where n is in the range 1..noImages[game]
 // and game is an element in the games array.
-var games = ["league-of-legends", "minėcraft", "rocket-league"];
+var games = ["league-of-legends", "mine-craft", "rocket-league"];
 var navPages = [].concat("index", games, "coming-soon");
 var noImgs = {
 	"league-of-legends": 4,
-	"minėcraft": 7,
+	"mine-craft": 7,
 	"rocket-league": 2
 };
 
@@ -179,7 +179,7 @@ function onListScroll(e) {
 for (var page of navPages) {
 	var liEl = document.createElement("li");
 	var aEl = document.createElement("a");
-	aEl.innerText = toTitleCase(page.replace(/-/g, " ").replace("index", "home").replace("ė", "e"));
+	aEl.innerText = toTitleCase(page.replace(/-/g, " ").replace("index", "home").replace("e-", "e"));
 	aEl.href = `./${page}.html`;
 	aEl.addEventListener("mouseleave", () => doHighlight({
 		target: nav.pageEl
