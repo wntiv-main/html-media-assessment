@@ -179,7 +179,7 @@ function onListScroll(e) {
 for (var page of navPages) {
 	var liEl = document.createElement("li");
 	var aEl = document.createElement("a");
-	aEl.innerText = toTitleCase(page.replace("e-", "e").replace(/-/g, " ").replace("index", "home"));
+	aEl.innerText = toTitleCase(page.replace("ine-", "ine").replace(/-/g, " ").replace("index", "home"));
 	aEl.href = `./${page}.html`;
 	aEl.addEventListener("mouseleave", () => doHighlight({
 		target: nav.pageEl
