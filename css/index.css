@@ -66,7 +66,7 @@ article .airport {
     max-width: calc(100% - 10px);
     margin: 5px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, width 0.3s, top 0.3s, left 0.3s;
 }
 
 .left {
@@ -85,10 +85,10 @@ article .airport {
     transition: filter 0.3s;
 }
 
-.imgcontainer:hover {
+.imgcontainer:not(.fullscreen):hover {
     transform: scale(1.1);
 }
 
-.imgcontainer:not(:hover) img {
+.imgcontainer:not(:hover):not(.fullscreen) img {
     filter: blur(1px);
 }
