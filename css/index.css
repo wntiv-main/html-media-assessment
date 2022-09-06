@@ -92,3 +92,15 @@ article .airport {
 .imgcontainer:not(:hover):not(.fullscreen) img {
     filter: blur(1px);
 }
+
+.container ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.container ul li::before {
+    content: "-";
+    margin: 0 1ch;
+    margin-top: -2px;
+}
