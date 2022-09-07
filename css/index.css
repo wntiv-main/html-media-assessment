@@ -102,5 +102,6 @@ article .airport {
 .container ul li::before {
     content: "-";
     margin: 0 1ch;
-    margin-top: -2px;
+    position: relative;
+    top: -2px;
 }
