@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
 :root {
-	--nav-height: 4rem;
+	--nav-height: calc(5vmin + 20px);
 }
 
 header {
@@ -22,7 +22,8 @@ header h1 {
 	transform: translate(-50%, -50%);
 	z-index: 1;
 	width: 100%;
-	font-size: calc(100vmax / 11);
+	font-size: 10vmax;
+    line-height: 1em;
 	font-family: 'Silkscreen', monospace;
 	text-rendering: geometricPrecision;
 	-webkit-filter: blur(1px);
@@ -132,10 +133,9 @@ nav ul li a {
 	vertical-align: middle;
 	line-height: var(--nav-height);
 	padding: 0 2em;
-	font-size: 1.6rem;
+	font-size: calc(var(--nav-height) / 2.5);
 	text-decoration: none;
 	border-left: 1px solid white;
-
 	-webkit-user-select: none;
 	user-select: none;
 	-webkit-user-drag: none;

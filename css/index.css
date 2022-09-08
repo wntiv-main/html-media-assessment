@@ -72,9 +72,10 @@ article .airport {
     border-radius: 30px;
     width: 400px;
     /* Fix bug with 4 extra px at bottom of img */
-    font-size: 0px;
+    font-size: 0;
+    line-height: 0;
     max-width: calc(100% - 10px);
-    margin: 5px;
+    margin: 7px;
     overflow: hidden;
     transition: transform 0.3s, width 0.3s, top 0.3s, left 0.3s;
 }
