@@ -1,0 +1,1 @@
+document.querySelectorAll("a.email").forEach(el => el.setAttribute("href", `mailto:${el.innerText}`));

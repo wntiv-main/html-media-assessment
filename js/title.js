@@ -47,11 +47,13 @@ function getBackgroundImage() {
 var background = {
 	main: document.querySelector("header .background.main"),
 	fade: document.querySelector("header .background.fade"),
-	header: document.querySelector("header h1")
+	header: document.querySelector("header h1"),
+	article: document.querySelector(".container article")
 }
 
 // Set initial background (hopefully quick enough that user does not notice)
 background.main.style.backgroundImage = `url("${getBackgroundImage()}")`;
+if (background.article) background.article.style.backgroundImage = `url("${getBackgroundImage()}")`;
 
 // Change background every 10sec
 // NOTE: selection is random so may change to be the same as before
@@ -101,6 +103,8 @@ function onScroll(e) {
 	// Update parallax
 	background.main.style.backgroundPositionY = `${-document.scrollingElement.scrollTop / 3}px`;
 	background.fade.style.backgroundPositionY = `${-document.scrollingElement.scrollTop / 3}px`;
+	if (background.article)
+		background.article.style.backgroundPositionY = `${(document.scrollingElement.scrollTop - window.innerHeight) / 2}px`;
 	background.header.style.top = `calc(50% + ${document.scrollingElement.scrollTop / 3}px)`;
 }
 
