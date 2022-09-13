@@ -21,11 +21,11 @@ function toTitleCase(str) {
 // The games. The URL for the page must be <game>.html and each
 // Image must be <game>_<n>.jpg, where n is in the range 1..noImages[game]
 // and game is an element in the games array.
-var games = ["league-of-legends", "mine-craft", "rocket-league"];
+var games = ["league-of-legends", "minecraft", "rocket-league"];
 var navPages = [].concat("index", games, "contact");
 var noImgs = {
 	"league-of-legends": 4,
-	"mine-craft": 7,
+	"minecraft": 7,
 	"rocket-league": 2
 };
 
