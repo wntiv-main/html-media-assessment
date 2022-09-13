@@ -172,7 +172,16 @@ article a:hover {
 article .tablecontainer {
 	border: 1px solid white;
 	border-radius: calc(10px + 1em);
-	overflow: hidden;
+	overflow: auto;
+	transition: box-shadow 0.3s;
+}
+
+article .tablecontainer::-webkit-scrollbar {
+	height: 12px;
+}
+
+article .tablecontainer::-webkit-scrollbar-track {
+	margin: calc(10px + 1em);
 }
 
 article table {
@@ -181,7 +190,7 @@ article table {
 }
 
 article table td, article table th {
-	border: 1px solid  white;
+	border: 1px solid white;
 	padding: 10px 20px;
 }
 
