@@ -7,6 +7,7 @@
 header {
 	color: white;
 	text-align: center;
+	-webkit-user-select: none;
 	user-select: none;
 	-webkit-user-drag: none;
 	overflow: hidden;
@@ -23,7 +24,7 @@ header h1 {
 	z-index: 1;
 	width: 100%;
 	font-size: 10vmax;
-    line-height: 1em;
+	line-height: 1em;
 	font-family: 'Silkscreen', monospace;
 	text-rendering: geometricPrecision;
 	-webkit-filter: blur(1px);
@@ -39,8 +40,8 @@ header .background {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center 0px;
-	filter: blur(10px);
 	-webkit-filter: blur(10px);
+	filter: blur(10px);
 	background-blend-mode: color-burn;
 	background-attachment: fixed;
 }
@@ -154,16 +155,6 @@ nav .highlight {
 	width: 0px;
 	height: 100%;
 	transition: left 0.3s, width 0.3s;
-}
-
-body.fallback nav ul li a {
-	transition: box-shadow 0.3s;
-}
-
-body.fallback nav ul li a:hover,
-body.fallback nav ul li a:focus,
-body.fallback nav ul li a.selected {
-	box-shadow: inset #bc7837a0 0 0 calc(var(--nav-height) / 2) calc(var(--nav-height) / 2);
 }
 
 nav .scrollhint {
